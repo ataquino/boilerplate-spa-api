@@ -12,7 +12,7 @@ gcloud config set project $GOOGLE_PROJECT_ID
 
 if ! gcloud container clusters list | grep $KUBERNETES_APP_NAME; then
   echo "Starting Cluster on GCE for $KUBERNETES_APP_NAME"
-  gcloud container clusters create $$KUBERNETES_APP_NAME --num-nodes 3 --machine-type f1-micro;
+  gcloud container clusters create $KUBERNETES_APP_NAME --num-nodes 3 --machine-type f1-micro;
 else
   gcloud container clusters get-credentials $KUBERNETES_APP_NAME
 fi
