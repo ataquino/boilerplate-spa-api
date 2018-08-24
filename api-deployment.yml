@@ -14,8 +14,21 @@ spec:
         app: boilerplate-spa
         tier: api
     spec:
+      terminationGracePeriodSeconds: 60
       containers:
         - name: boilerplate-spa-api
           image: ataquino/boilerplate-spa-api
+          imagePullPolicy: "Always"
           ports:
-            - containerPort: 80
+            - containerPort: 4000
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: PORT
+            - name: TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: api-secrets
+                  key: TOKEN_SECRET

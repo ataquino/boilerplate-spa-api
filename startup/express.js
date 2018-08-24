@@ -7,6 +7,8 @@ const { log } = require('../utils/log');
 
 const app = express();
 
+log(process.env);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -25,6 +27,6 @@ app.use((err, req, res, next) => {
 
 app.use('/', router);
 
-app.listen(process.env.API_PORT, () => {
-  log(`Listening on port ${process.env.API_PORT}`);
+app.listen(process.env.PORT, () => {
+  log(`Listening on port ${process.env.PORT}`);
 });
