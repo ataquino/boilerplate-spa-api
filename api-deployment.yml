@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      app: boilerplate-spa
+      tier: api
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: boilerplate-spa
+        tier: api
+    spec:
+      containers:
+        - name: boilerplate-spa-api
+          image: ataquino/boilerplate-spa-api
+          ports:
+            - containerPort: 80

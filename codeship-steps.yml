@@ -1,0 +1,23 @@
+- name: test
+  tag: master
+  type: serial
+  steps:
+    - service: api-test
+      command: npm run test
+- name: push tagged container
+  tag: master
+  type: push
+  service: api
+  image_name: ataquino/boilerplate-spa-api
+  image_tag: {{.CommitID}}
+  encrypted_dockercfg_path: dockercfg.encrypted
+- name: push master container
+  tag: master
+  type: push
+  service: api
+  image_name: ataquino/boilerplate-spa-api
+  image_tag: latest
+  encrypted_dockercfg_path: dockercfg.encrypted
+- name: google-container-engine-deployment
+  service: codeshipgceservice
+  command: ./google-deploy.sh

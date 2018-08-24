@@ -1,0 +1,19 @@
+version: '3'
+services:
+  api-test:
+    build:
+      dockerfile: Dockerfile.test
+  api:
+    build:
+      dockerfile: Dockerfile.prod
+  codeshipgcrdockercfg:
+    image: codeship/gcr-dockercfg-generator
+    encrypted_env_file: gcp-env.encrypted
+    add_docker: true
+  codeshipgceservice:
+    image: codeship/google-cloud-deployment
+    encrypted_env_file: gcp-env.encrypted
+    add_docker: true
+    working_dir: /deploy
+    volumes:
+      - ./:/deploy
