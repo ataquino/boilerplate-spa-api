@@ -3,7 +3,7 @@ services:
   api-test:
     build:
       dockerfile: Dockerfile.test
-  api:
+  api-prod:
     build:
       dockerfile: Dockerfile.prod
   codeshipgcrdockercfg:
