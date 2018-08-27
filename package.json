@@ -11,6 +11,10 @@
     "start": "node index.js"
   },
   "author": "Arthur Aquino <ataquino@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ataquino/boilerplate-spa-api.git"
+  },
   "license": "ISC",
   "dependencies": {
     "async": "^2.6.1",
