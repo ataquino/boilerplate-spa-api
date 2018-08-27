@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -r dotenv/config index.js dotenv_config_path=.env",
-    "test": "eslint .",
+    "test": "npm run lint",
     "lint": "eslint .",
-    "precommit": "eslint .",
+    "precommit": "npm test",
     "start": "node index.js"
   },
   "author": "Arthur Aquino <ataquino@gmail.com>",
