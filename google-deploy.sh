@@ -25,7 +25,8 @@ if kubectl get configmap | grep 'api-config'; then
 fi
 
 kubectl create configmap api-config \
-  --from-literal=PORT=$PORT
+  --from-literal=NODE_ENV=$NODE_ENV \
+  --from-literal=PORT=$PORT;
 
 if kubectl get secret | grep 'api-secrets'; then
   kubectl delete secret api-secrets;

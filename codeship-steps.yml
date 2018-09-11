@@ -4,20 +4,20 @@
     - service: api-test
       command: npm run test
 - name: push tagged container
-  tag: ^v(\d+\.)?(\d+\.)?(\d+)$
+  tag: ^(\d+\.)?(\d+\.)?(\d+)$
   type: push
   service: api-prod
   image_name: ataquino/boilerplate-spa-api
   image_tag: "{{.CommitDescription}}"
   encrypted_dockercfg_path: dockercfg.encrypted
 - name: push master container
-  tag: ^v(\d+\.)?(\d+\.)?(\d+)$
+  tag: ^(\d+\.)?(\d+\.)?(\d+)$
   type: push
   service: api-prod
   image_name: ataquino/boilerplate-spa-api
   image_tag: latest
   encrypted_dockercfg_path: dockercfg.encrypted
 - name: google-container-engine-deployment
-  tag: ^v(\d+\.)?(\d+\.)?(\d+)$
+  tag: ^(\d+\.)?(\d+\.)?(\d+)$
   service: codeshipgceservice
   command: ./google-deploy.sh
